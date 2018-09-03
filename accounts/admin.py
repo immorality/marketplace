@@ -2,19 +2,21 @@ from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
-from .forms import CustomAccountCreationForm, CustomAccountChangeForm
-from .models import CustomAccount
+from .forms import AccountCreationForm, AccountChangeForm
+from .models import Account
 
-class CustomAccountAdmin(UserAdmin):
-    fieldsets = (
-    (None, {'fields': ('username', 'email', 'password', 'is_seller')}),
-    ('Permissions', {'fields': ('is_superuser', 'is_staff', 'is_active',)}),
-    )
+class AccountAdmin(UserAdmin):
     
-    add_form = CustomAccountCreationForm
-    form = CustomAccountChangeForm
-    model = CustomAccount
-    list_display = ['email', 'username', 'is_seller']
+    model = Account
+    add_form = AccountCreationForm
+    form = AccountChangeForm
+    list_display = ['email', 'username', 'seller', 'date_joined']
 
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide', 'extrapretty'),
+            'fields': ('username', 'password1', 'password2', 'seller', 'first_name'),
+        }),
+    )
 
-admin.site.register(CustomAccount, CustomAccountAdmin)
+admin.site.register(Account, AccountAdmin)
