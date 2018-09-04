@@ -25,7 +25,7 @@ SECRET_KEY = 'tis-8*!ibm909&32&zoazxi7!wmmh#uaa+ytlt1f(+q8w#nfx9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
