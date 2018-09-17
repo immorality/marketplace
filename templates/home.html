@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load socialaccount %}
+
 
 {% block title %}Home{% endblock %}
 
@@ -10,6 +12,7 @@
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Login</a>
+  <p><a href="{% provider_login_url 'google' %}">Log In with Gmail</a></p>
   <a href="{% url 'signup' %}">Sign up</a>
   
 {% endif %}
